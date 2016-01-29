@@ -19,7 +19,7 @@ if has("autocmd")
 	" plugin on Github repo
 	"Plugin 'tpope/vim-fugitive' " git in vim
 	"Plugin 'drmingdrmer/xptemplate' " snippet
-	"Plugin 'Valloric/YouCompleteMe'
+	Plugin 'Valloric/YouCompleteMe'
 
 	" Plugin from http://vim-scripts.org/vim/scripts.html
 	Plugin 'taglist.vim'
@@ -112,3 +112,11 @@ set guifontwide=WenQuanYi\ Zen\ Hei\ Mono
 colorscheme molokai
 set t_Co=256
 nnoremap <silent> <F7> :TlistToggle<CR>
+
+let loaded_matchparen=1
+
+"---------------------------------------------------------------------
+" youcompleteme
+"---------------------------------------------------------------------
+
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
