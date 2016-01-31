@@ -1,9 +1,8 @@
 set nocompatible " nocp
 
-
-" Begin vundle configure
-filetype off
 if has("autocmd")
+	" Begin vundle configure
+	filetype off
 	" set the runtime path to include Vundle and initialize
 	set rtp+=~/.vim/bundle/Vundle.vim
 	call vundle#begin()
@@ -44,22 +43,21 @@ if has("autocmd")
 
 	" All of your Plugins must be added before the following line
 	call vundle#end()
+	filetype plugin indent on
+	" To ignore plugin indent changes, instead use:
+	"filetype plugin on 
+	"
+	" Brief help
+	" :PluginList - list configured plugins
+	" :PluginInstall(!) - install (update) plugins
+	" :PluginSearch(!) foo - search (or refresh cache first) for foo
+	" :PluginClean(!) - confirm (or auto-approve) removel of unused plugins
+	"
+	" see :h vundle for more details or wiki for FAQ
+	" End vundle configure, put your non-Plugin stuff after this line
+
+	syntax on
 endif
-filetype plugin indent on
-" To ignore plugin indent changes, instead use:
-"filetype plugin on 
-"
-" Brief help
-" :PluginList - list configured plugins
-" :PluginInstall(!) - install (update) plugins
-" :PluginSearch(!) foo - search (or refresh cache first) for foo
-" :PluginClean(!) - confirm (or auto-approve) removel of unused plugins
-"
-" see :h vundle for more details or wiki for FAQ
-" End vundle configure, put your non-Plugin stuff after this line
-
-
-syntax on
 
 set backspace=indent,eol,start
 "set cursorline
@@ -83,16 +81,6 @@ set linebreak " lbr, no line break between words
 
 " buffer configure
 set hidden
-
-" configure according to filetype
-"if has("autocmd")
-"	autocmd FileType java setlocal ts=4 sts=0 sw=4
-"	autocmd FileType sh setlocal ts=4 sts=0 sw=4
-"	autocmd FileType xml setlocal ts=2 sts=0 sw=2
-"	autocmd FileType sql setlocal ts=4 sts=0 sw=4
-"	autocmd FileType vim setlocal ts=4 sts=0 sw=4
-"	autocmd FileType html setlocal ts=2 sts=0 sw=2
-"endif
 
 " Indent
 "set cindent " cin
@@ -123,3 +111,19 @@ let loaded_matchparen=1
 "---------------------------------------------------------------------
 let g:ycm_filetype_whitelist = {'c': 1, 'cpp': 1, 'python': 1, 'vim': 1}
 let g:ycm_confirm_extra_conf = 0
+let g:ycm_global_ycm_extra_conf='~/.vim/.ycm_extra_conf.py'
+
+"---------------------------------------------------------------------
+" configure according to filetype
+"---------------------------------------------------------------------
+
+function CppConf()
+	setlocal cindent
+	nnoremap <silent> <F7> :TlistToggle<CR>
+endfunction	
+
+if has("autocmd")
+	autocmd FileType *.c,*.cpp,*.h call CppConf()
+	autocmd FileType xml setlocal ts=2 sts=0 sw=2
+	autocmd FileType html setlocal ts=2 sts=0 sw=2
+endif
