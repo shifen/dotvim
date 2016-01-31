@@ -20,6 +20,7 @@ if has("autocmd")
 	"Plugin 'tpope/vim-fugitive' " git in vim
 	"Plugin 'drmingdrmer/xptemplate' " snippet
 	Plugin 'Valloric/YouCompleteMe'
+	Plugin 'rdnetto/YCM-Generator'
 
 	" Plugin from http://vim-scripts.org/vim/scripts.html
 	Plugin 'taglist.vim'
@@ -84,14 +85,14 @@ set linebreak " lbr, no line break between words
 set hidden
 
 " configure according to filetype
-if has("autocmd")
-	autocmd FileType java setlocal ts=4 sts=0 sw=4
-	autocmd FileType sh setlocal ts=4 sts=0 sw=4
-	autocmd FileType xml setlocal ts=2 sts=0 sw=2
-	autocmd FileType sql setlocal ts=4 sts=0 sw=4
-	autocmd FileType vim setlocal ts=4 sts=0 sw=4
-	autocmd FileType html setlocal ts=2 sts=0 sw=2
-endif
+"if has("autocmd")
+"	autocmd FileType java setlocal ts=4 sts=0 sw=4
+"	autocmd FileType sh setlocal ts=4 sts=0 sw=4
+"	autocmd FileType xml setlocal ts=2 sts=0 sw=2
+"	autocmd FileType sql setlocal ts=4 sts=0 sw=4
+"	autocmd FileType vim setlocal ts=4 sts=0 sw=4
+"	autocmd FileType html setlocal ts=2 sts=0 sw=2
+"endif
 
 " Indent
 "set cindent " cin
@@ -104,19 +105,21 @@ set fileencodings=utf-8,gbk,ucs-bom,latin1
 "set termencoding=utf-8
 
 " font
-set guifontwide=WenQuanYi\ Zen\ Hei\ Mono
+if has("unix")
+	set guifontwide=WenQuanYi\ Zen\ Hei\ Mono
+endif
 
 "set display=lastline
 
 "set virtualedit=all " ve, let curser can position anywhere
 colorscheme molokai
 set t_Co=256
-nnoremap <silent> <F7> :TlistToggle<CR>
+"nnoremap <silent> <F7> :TlistToggle<CR>
 
 let loaded_matchparen=1
 
 "---------------------------------------------------------------------
-" youcompleteme
+" YouCompleteMe
 "---------------------------------------------------------------------
-
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_filetype_whitelist = {'c': 1, 'cpp': 1, 'python': 1, 'vim': 1}
+let g:ycm_confirm_extra_conf = 0
